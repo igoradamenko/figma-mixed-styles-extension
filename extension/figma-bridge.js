@@ -221,12 +221,9 @@
       return [{ start, end, ...result }];
     }
 
-    const leftStart = start;
-    const leftEnd = Math.floor((start + end) / 2);
-    const rightStart = leftEnd;
-    const rightEnd = end;
+    const middle = Math.floor((start + end) / 2);
 
-    return [...divideAndExtract(node, style, leftStart, leftEnd), ...divideAndExtract(node, style, rightStart, rightEnd)];
+    return [...divideAndExtract(node, style, start, middle), ...divideAndExtract(node, style, middle, end)];
   }
 
   function extractRange(node, style, start, end) {
