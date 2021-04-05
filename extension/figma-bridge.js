@@ -13,6 +13,11 @@
     TEXT_DECORATION: 'TEXT_DECORATION',
     LETTER_SPACING: 'LETTER_SPACING',
     COLOR: 'COLOR',
+
+    // our only styles, not defined by Figma
+    X_FONT_FAMILY: 'X_FONT_FAMILY',
+    X_FONT_WEIGHT: 'X_FONT_WEIGHT',
+    X_FONT_STYLE: 'X_FONT_STYLE',
   };
 
   const STYLE_TO_SINGLE_PROP = {
@@ -20,7 +25,6 @@
     [STYLES.TEXT_INDENT]: 'paragraphIndent',
   };
 
-  // TODO: fillStyleId? textStyleId?
   const STYLE_TO_RANGE_PROP = {
     [STYLES.FONT_SIZE]: 'getRangeFontSize',
     [STYLES.FONT]: 'getRangeFontName',
@@ -31,16 +35,27 @@
     [STYLES.COLOR]: 'getRangeFills',
   };
 
+  const STYLE_TO_PREPROCESSOR = {
+    [STYLES.FONT]: preprocessFont,
+  };
+
   const STYLE_TO_COMPARATOR = {
     [STYLES.TEXT_ALIGN]: areScalarsEqual,
     [STYLES.TEXT_INDENT]: areScalarsEqual,
-    [STYLES.FONT]: areFontsEqual,
+    [STYLES.FONT]: () => {
+      // dont need it, because we split FONT to X_FONT_* using preprocessor
+      throw new Error('Something went wrong!');
+    },
     [STYLES.FONT_SIZE]: areScalarsEqual,
     [STYLES.LINE_HEIGHT]: areLineHeightsEqual,
     [STYLES.TEXT_TRANSFORM]: areScalarsEqual,
     [STYLES.TEXT_DECORATION]: areScalarsEqual,
     [STYLES.LETTER_SPACING]: areLetterSpacingsEqual,
     [STYLES.COLOR]: arePaintsEqual,
+
+    [STYLES.X_FONT_FAMILY]: areScalarsEqual,
+    [STYLES.X_FONT_WEIGHT]: areScalarsEqual,
+    [STYLES.X_FONT_STYLE]: areScalarsEqual,
   };
 
   switch (type) {
@@ -104,14 +119,36 @@
     const rangeStyles = Object.keys(STYLE_TO_RANGE_PROP);
     const rangeStylesStops = [];
 
-    for (let i = 0; i < rangeStyles.length; i++) {
-      const stops = divideAndExtract(node, rangeStyles[i], 0, node.characters.length);
-      const optimizedStops = optimizeStops(stops, STYLE_TO_COMPARATOR[rangeStyles[i]]);
+    function optimizeAndSaveStops(stops, style) {
+      const optimizedStops = optimizeStops(stops, STYLE_TO_COMPARATOR[style]);
 
-      if (optimizedStops.length === 1) {
+      if (optimizedStops.length === 1 && optimizedStops[0].start === 0 && optimizedStops[0].end === node.characters.length) {
         commonRangeStyles.push(optimizedStops[0]);
       } else {
         rangeStylesStops.push(optimizedStops);
+      }
+    }
+
+    for (let i = 0; i < rangeStyles.length; i++) {
+      const stops = divideAndExtract(node, rangeStyles[i], 0, node.characters.length);
+
+      if (!stops.some(x => x.style.startsWith('X_'))) {
+        optimizeAndSaveStops(stops, rangeStyles[i]);
+      } else {
+        // we have preprocessed ones, so we have to split array by groups
+        const stopsByStyles = stops.reduce((acc, stop) => {
+          if (!acc[stop.style]) {
+            acc[stop.style] = [];
+          }
+
+          acc[stop.style].push(stop);
+
+          return acc;
+        }, {});
+
+        Object.entries(stopsByStyles).forEach(([style, stops]) => {
+          optimizeAndSaveStops(stops, style);
+        });
       }
     }
 
@@ -177,6 +214,10 @@
     const result = extractRange(node, style, start, end);
 
     if (result.value !== figma.mixed) {
+      if (STYLE_TO_PREPROCESSOR[style]) {
+        return STYLE_TO_PREPROCESSOR[style](result, start, end);
+      }
+
       return [{ start, end, ...result }];
     }
 
@@ -194,6 +235,44 @@
 
   function extractSingle(node, style) {
     return { style, value: node[STYLE_TO_SINGLE_PROP[style]] };
+  }
+
+
+
+  /* PREPROCESSORS */
+
+  function preprocessFont({ value }, start, end) {
+    const FONT_WEIGHTS = {
+      Thin: 100,
+      ExtraLight: 200,
+      Light: 300,
+      Regular: 400,
+      Medium: 500,
+      SemiBold: 600,
+      DemiBold: 600, // cursed
+      Bold: 700,
+      ExtraBold: 800,
+      Black: 900,
+    };
+
+    // sometimes style may contain other words like “Text”, so we filter them out
+    const possibleValueParts = [...Object.keys(FONT_WEIGHTS), 'Italic'];
+    const filteredValue = value.style.split(' ').filter(x => possibleValueParts.includes(x));
+
+    let [weight = 'Regular', style] = filteredValue;
+
+    if (weight === 'Italic') {
+      [style, weight = 'Regular'] = [weight, style];
+    }
+
+    const fontStyle = style === 'Italic' ? 'italic' : 'normal';
+    const fontWeight = FONT_WEIGHTS[weight];
+
+    return [
+      { style: STYLES.X_FONT_FAMILY, value: value.family, start, end },
+      { style: STYLES.X_FONT_WEIGHT, value: fontWeight, start, end },
+      { style: STYLES.X_FONT_STYLE, value: fontStyle, start, end },
+    ];
   }
 
 
@@ -233,10 +312,6 @@
     }
   }
 
-  function areFontsEqual(fn1, fn2) {
-    return compareFields(['family', 'style'], fn1, fn2);
-  }
-
 
 
   /* HELPERS */
@@ -271,6 +346,6 @@
   }
 
   function log(...rest) {
-    console.log('[FIGMA SEARCH: BRIDGE]', ...rest);
+    console.log('[FIGMA MIXED STYLES: BRIDGE]', ...rest);
   }
 })();

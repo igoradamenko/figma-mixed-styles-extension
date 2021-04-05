@@ -76,10 +76,17 @@ function buildCSS({ commonStyles, stopsWithStyles, characters }) {
     TEXT_INDENT: buildTextIndent,
     TEXT_TRANSFORM: buildTextTransform,
     LETTER_SPACING: buildLetterSpacing,
-    FONT: buildFont,
+    X_FONT_FAMILY: buildFontFamily,
     FONT_SIZE: buildFontSize,
+    X_FONT_WEIGHT: buildFontWeight,
+    X_FONT_STYLE: buildFontStyle,
     LINE_HEIGHT: buildLineHeight,
     COLOR: buildColor,
+
+    FONT: () => {
+      // dont need it, because we split FONT to X_FONT_* in bridge
+      throw new Error('Something went wrong!');
+    },
   };
 
   const styles = Object.keys(STYLE_TO_BUILDER);
@@ -136,38 +143,20 @@ function buildTextIndent(value) {
   return [buildCSSProp(CSS_PROPS_STYLES.UNIT, 'text-indent', value, 'px')];
 }
 
-function buildFont(value) {
-  const FONT_WEIGHTS = {
-    Thin: 100,
-    ExtraLight: 200,
-    Light: 300,
-    Regular: 400,
-    Medium: 500,
-    SemiBold: 600,
-    DemiBold: 600, // cursed
-    Bold: 700,
-    ExtraBold: 800,
-    Black: 900,
-  };
+function buildFontFamily(value) {
+  return [buildCSSProp(CSS_PROPS_STYLES.STRING, 'font-family', `'${value}'`)];
+}
 
-  // sometimes style may contain other words like “Text”, so we filter them out
-  const possibleValueParts = [...Object.keys(FONT_WEIGHTS), 'Italic'];
-  const filteredValue = value.style.split(' ').filter(x => possibleValueParts.includes(x));
+function buildFontWeight(value) {
+  return [buildCSSProp(CSS_PROPS_STYLES.UNIT, 'font-weight', value)];
+}
 
-  let [weight = 'Regular', style] = filteredValue;
-
-  if (weight === 'Italic') {
-    [style, weight = 'Regular'] = [weight, style];
+function buildFontStyle(value) {
+  if (value === 'normal') {
+    return [];
   }
 
-  const fontStyle = style === 'Italic' ? 'italic' : null;
-  const fontWeight = FONT_WEIGHTS[weight];
-
-  return [
-    buildCSSProp(CSS_PROPS_STYLES.STRING, 'font-family', `'${value.family}'`),
-    buildCSSProp(CSS_PROPS_STYLES.UNIT, 'font-weight', fontWeight),
-    ...(fontStyle ? [buildCSSProp(CSS_PROPS_STYLES.UNIT, 'font-style', fontStyle)] : []),
-  ];
+  return [buildCSSProp(CSS_PROPS_STYLES.KEYWORD, 'font-style', value)];
 }
 
 function buildFontSize(value) {
