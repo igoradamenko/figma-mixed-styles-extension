@@ -96,7 +96,7 @@ function buildCSSMarkup({ commonStyles, stopsWithStyles, characters }) {
 
   if (commonStyles.length) {
     let block = '<div class="css-block"><p class="comment">/* COMMON */</p>'
-    block += `<code class="ruleset">${stylesArrayToCSS(commonStyles)}</code><button class="copy-button">← Copy</button></div>`;
+    block += `<code class="ruleset">${stylesArrayToCSS(commonStyles)}</code><button class="copy-button">Copy</button></div>`;
     result.push(block);
   }
 
@@ -107,7 +107,7 @@ function buildCSSMarkup({ commonStyles, stopsWithStyles, characters }) {
     if (string.trim().length === 0) continue;
 
     let block = `<div class="css-block"><p class="comment">/* ${characters.substring(stops.start, stops.end)} */</p>`;
-    block += `<code class="ruleset">${stylesArrayToCSS(stops.styles)}</code><button class="copy-button">← Copy</button></div>`;
+    block += `<code class="ruleset">${stylesArrayToCSS(stops.styles)}</code><button class="copy-button">Copy</button></div>`;
     result.push(block);
   }
 
@@ -293,11 +293,11 @@ function initCopyButtons() {
 
       navigator.clipboard.writeText(css)
         .then(() => {
-          button.innerHTML = 'Copied!';
+          button.innerHTML = 'Copied';
 
           clearTimeout(cooldownTimeout);
           cooldownTimeout = setTimeout(() => {
-            button.innerHTML = '← Copy';
+            button.innerHTML = 'Copy';
           }, 2000);
         })
         .catch(err => {
