@@ -218,7 +218,7 @@ function buildLetterSpacing(value) {
     return [];
   }
 
-  let cssValue = value.value;
+  let cssValue = +value.value.toFixed(2);
   let cssUnit = 'px';
 
   if (value.unit === 'PERCENT') {
