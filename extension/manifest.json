@@ -1,0 +1,43 @@
+{
+  "manifest_version": 2,
+  "name": "Figma Mixed Styles",
+  "version": "0.1.0",
+  "description": "Extract CSS of Figma text nodes with mixed styles",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "figma-mixed-styles-extension@igoradamenko.com"
+    }
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "tabs"
+  ],
+  "icons": {
+    "256": "icon.png"
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      },
+      "description": "Open the extension"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.figma.com/*"],
+      "js": ["figma-bg.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    "figma-bridge.js"
+  ]
+}

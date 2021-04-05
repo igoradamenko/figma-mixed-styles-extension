@@ -1,0 +1,3 @@
+- Add copy-to-clipboard button. Maybe one per each block.
+- Tests
+- Add comment for line-height with px alternative? And for font-weight? Maybe add it like an option or button?
