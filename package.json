@@ -1,7 +1,7 @@
 {
   "name": "figma-mixed-styles-extension",
   "version": "0.1.0",
-  "description": "Find out styles of Figma elements with mixed styles",
+  "description": "Extract CSS of Figma text nodes with mixed styles",
   "private": true,
   "//": "such a weird nodemon configuration due to https://youtrack.jetbrains.com/issue/WEB-36644#focus=Comments-27-3252515.0-0",
   "scripts": {
