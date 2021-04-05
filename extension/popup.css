@@ -23,7 +23,7 @@ html,body {
 }
 
 .content {
-  padding: 16px;
+  padding: 16px 8px;
 }
 
 .error {
@@ -37,18 +37,26 @@ html,body {
   text-align: center;
 }
 
+.css-block {
+  position: relative;
+}
+
 .comment {
   color: #aaa;
   margin: 0;
+  padding: 0 8px;
 }
 
 .ruleset {
   display: block;
   font: inherit;
+  padding: 8px;
+  border-radius: 2px;
+  transition: background-color .15s ease-in-out;
 }
 
-.comment + .ruleset {
-  margin-top: 8px;
+.ruleset_highlighted {
+  background-color: rgba(255, 176, 0, .1);
 }
 
 .value_type_unit {
@@ -80,3 +88,23 @@ html,body {
   border-radius: 2px;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .17);
 }
+
+.copy-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 8px;
+  opacity: .15;
+  font: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transition: opacity .15s ease-in-out;
+  user-select: none;
+  outline: none;
+}
+
+.copy-button:hover {
+  opacity: .75;
+}
+

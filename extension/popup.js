@@ -48,28 +48,29 @@ function sendMessage(message) {
 function showResult(data) {
   switch (data.status) {
     case 'EMPTY':
-      contentNode.innerHTML = buildError('Nothing selected');
+      contentNode.innerHTML = buildErrorMarkup('Nothing selected');
       return;
 
     case 'MORE_THAN_ONE':
-      contentNode.innerHTML = buildError('More than one node selected');
+      contentNode.innerHTML = buildErrorMarkup('More than one node selected');
       return;
 
     case 'NOT_TEXT_NODE':
-      contentNode.innerHTML = buildError('Non-text node selected');
+      contentNode.innerHTML = buildErrorMarkup('Non-text node selected');
       return;
 
     case 'OK':
-      contentNode.innerHTML = buildCSS(data.result);
+      contentNode.innerHTML = buildCSSMarkup(data.result);
+      initCopyButtons();
       return;
   }
 }
 
-function buildError(text) {
+function buildErrorMarkup(text) {
   return `<div class="error">${text}</div>`;
 }
 
-function buildCSS({ commonStyles, stopsWithStyles, characters }) {
+function buildCSSMarkup({ commonStyles, stopsWithStyles, characters }) {
   const STYLE_TO_BUILDER = {
     TEXT_ALIGN: buildTextAlign,
     TEXT_DECORATION: buildTextDecoration,
@@ -94,8 +95,8 @@ function buildCSS({ commonStyles, stopsWithStyles, characters }) {
   let result = [];
 
   if (commonStyles.length) {
-    let block = '<p class="comment">/* COMMON */</p>'
-    block += `<code class="ruleset">${stylesArrayToCSS(commonStyles)}</code>`;
+    let block = '<div class="css-block"><p class="comment">/* COMMON */</p>'
+    block += `<code class="ruleset">${stylesArrayToCSS(commonStyles)}</code><button class="copy-button">← Copy</button></div>`;
     result.push(block);
   }
 
@@ -105,8 +106,8 @@ function buildCSS({ commonStyles, stopsWithStyles, characters }) {
 
     if (string.trim().length === 0) continue;
 
-    let block = `<p class="comment">/* ${characters.substring(stops.start, stops.end)} */</p>`;
-    block += `<code class="ruleset">${stylesArrayToCSS(stops.styles)}</code>`;
+    let block = `<div class="css-block"><p class="comment">/* ${characters.substring(stops.start, stops.end)} */</p>`;
+    block += `<code class="ruleset">${stylesArrayToCSS(stops.styles)}</code><button class="copy-button">← Copy</button></div>`;
     result.push(block);
   }
 
@@ -280,4 +281,37 @@ function buildCSSProp(type, prop, value, unit = '') {
     valueSuffix,
     '<span class="punctuation">;</span>',
   ].join('');
+}
+
+function initCopyButtons() {
+  $$('.copy-button').forEach(button => {
+    const rulesetNode = button.closest('.css-block').querySelector('.ruleset');
+    let cooldownTimeout;
+
+    button.addEventListener('click', () => {
+      const css = rulesetNode.textContent.replace(/;(.)/g, ';\n$1');
+
+      navigator.clipboard.writeText(css)
+        .then(() => {
+          button.innerHTML = 'Copied!';
+
+          clearTimeout(cooldownTimeout);
+          cooldownTimeout = setTimeout(() => {
+            button.innerHTML = '← Copy';
+          }, 2000);
+        })
+        .catch(err => {
+          console.error(err);
+          button.innerHTML = `Can't :(`;
+        });
+    });
+
+    button.addEventListener('mouseover', () => {
+      rulesetNode.classList.add('ruleset_highlighted');
+    });
+
+    button.addEventListener('mouseleave', () => {
+      rulesetNode.classList.remove('ruleset_highlighted');
+    });
+  });
 }
