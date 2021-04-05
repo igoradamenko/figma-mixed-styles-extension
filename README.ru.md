@@ -22,10 +22,6 @@
 
 ## Мотивация
 
-Currently Figma does not have such a built-in option. Maybe it's possible to figure out complex styles using plugins,
-but they do not work it “View only” mode.
-
-
 В Figma нет встроенной возможности генерации CSS для текстовых нод со сложной стилизацией. Возможно можно использовать 
 плагины, но они не работают в режиме «View only». 
 
