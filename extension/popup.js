@@ -144,12 +144,17 @@ function buildFont(value) {
     Regular: 400,
     Medium: 500,
     SemiBold: 600,
+    DemiBold: 600, // cursed
     Bold: 700,
     ExtraBold: 800,
     Black: 900,
   };
 
-  let [weight = 'Regular', style] = value.style.split(' ');
+  // sometimes style may contain other words like “Text”, so we filter them out
+  const possibleValueParts = [...Object.keys(FONT_WEIGHTS), 'Italic'];
+  const filteredValue = value.style.split(' ').filter(x => possibleValueParts.includes(x));
+
+  let [weight = 'Regular', style] = filteredValue;
 
   if (weight === 'Italic') {
     [style, weight = 'Regular'] = [weight, style];
