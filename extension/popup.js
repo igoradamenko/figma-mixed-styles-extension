@@ -121,10 +121,18 @@ function buildCSS({ commonStyles, stopsWithStyles, characters }) {
 }
 
 function buildTextAlign(value) {
+  if (value === 'LEFT') {
+    return [];
+  }
+
   return [buildCSSProp(CSS_PROPS_STYLES.KEYWORD, 'text-align', value.toLowerCase())];
 }
 
 function buildTextIndent(value) {
+  if (value === 0) {
+    return [];
+  }
+
   return [buildCSSProp(CSS_PROPS_STYLES.UNIT, 'text-indent', value, 'px')];
 }
 
@@ -206,6 +214,10 @@ function buildTextDecoration(value) {
 }
 
 function buildLetterSpacing(value) {
+  if (value.value === 0) {
+    return [];
+  }
+
   let cssValue = value.value;
   let cssUnit = 'px';
 

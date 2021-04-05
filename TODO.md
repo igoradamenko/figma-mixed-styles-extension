@@ -2,3 +2,4 @@
 - Tests
 - Add comment for line-height with px alternative? And for font-weight? Maybe add it like an option or button?
 - Change logo to non-related to component?
+- Improve stores desc, add video
