@@ -18,7 +18,7 @@
 
 [comment]: <> ([![Figma Search в Mozilla Add-ons]&#40;./add-to-firefox.svg&#41;]&#40;https://addons.mozilla.org/en-US/firefox/addon/figma-search/&#41;)
 
-[comment]: <> ([![Демо видео на Ютубе]&#40;./youtube-demo.png&#41;]&#40;https://youtu.be/F4wWJUe3JxQ&#41;)
+[![Демо видео на Ютубе](./youtube-demo.png)](https://youtu.be/mDQfaYA5ltA)
 
 ## Мотивация
 

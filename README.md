@@ -18,7 +18,7 @@ Supported browsers: Chrome, Firefox, and any Chromium-based browser (Edge, Opera
 
 [comment]: <> ([![Figma Search in Mozilla Add-ons]&#40;./add-to-firefox.svg&#41;]&#40;https://addons.mozilla.org/en-US/firefox/addon/figma-search/&#41;)
 
-[comment]: <> ([![Demo Video on YouTube]&#40;./youtube-demo.png&#41;]&#40;https://youtu.be/F4wWJUe3JxQ&#41;)
+[![Demo Video on YouTube](./youtube-demo.png)](https://youtu.be/mDQfaYA5ltA)
 
 ## Rationale
 
