@@ -14,12 +14,12 @@ html,body {
   position: relative;
   width: 340px;
   height: 536px;
-  overflow: hidden;
   font-size: 12px;
   line-height: 16px;
   font-family: 'Fira Code', 'Fira Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
   font-weight: 400;
   color: #444;
+  overflow-x: hidden; /* for some reason firefox on windows want to show horizontal scroll */
 }
 
 .content {
