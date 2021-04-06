@@ -1,3 +1,4 @@
 - Add comment for line-height with px alternative? And for font-weight? Maybe add it like an option or button?
 - Improve stores desc, add video
 - Update video description
+- Update icon!
