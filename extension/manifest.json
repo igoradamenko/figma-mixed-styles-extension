@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Figma Mixed Styles",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Extract CSS of Figma text nodes with mixed styles",
   "browser_specific_settings": {
     "gecko": {
