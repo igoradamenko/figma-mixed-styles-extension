@@ -16,7 +16,6 @@ Supported browsers: Chrome, Firefox, and any Chromium-based browser (Edge, Opera
 [По-русски](./README.ru.md)
 
 [![Figma Mixed Styles in Chrome Web Store](./add-to-chrome.svg)](https://chrome.google.com/webstore/detail/figma-mixed-styles/fadeacofglmdopmolpaoaacijjfifcpe)
-
 [![Figma Mixed Styles in Mozilla Add-ons](./add-to-firefox.svg)](https://addons.mozilla.org/en-US/firefox/addon/figma-mixed-styles/)
 
 [![Demo Video on YouTube](./youtube-demo.png)](https://youtu.be/mDQfaYA5ltA)

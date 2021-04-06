@@ -16,7 +16,6 @@
 [In English](./README.md)
 
 [![Figma Mixed Styles в Chrome Web Store](./add-to-chrome.svg)](https://chrome.google.com/webstore/detail/figma-mixed-styles/fadeacofglmdopmolpaoaacijjfifcpe)
-
 [![Figma Mixed Styles в Mozilla Add-ons](./add-to-firefox.svg)](https://addons.mozilla.org/en-US/firefox/addon/figma-mixed-styles/)
 
 [![Демо видео на Ютубе](./youtube-demo.png)](https://youtu.be/mDQfaYA5ltA)
