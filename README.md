@@ -6,7 +6,8 @@
      width="128"
      height="128">
 
-[comment]: <> (![Chrome Web Store]&#40;https://img.shields.io/chrome-web-store/v/lfofpannpmmeeicgiiacjghmcfgnebbi?label=Chrome%20Web%20Store&#41; ![Mozilla Add-on]&#40;https://img.shields.io/amo/v/figma-search?label=Mozilla%20Add-ons&#41;)
+[comment]: <> (![Chrome Web Store]&#40;https://img.shields.io/chrome-web-store/v/lfofpannpmmeeicgiiacjghmcfgnebbi?label=Chrome%20Web%20Store&#41; )
+![Mozilla Add-on](https://img.shields.io/amo/v/figma-mixed-styles?label=Mozilla%20Add-ons)
 
 Extract CSS of Figma text nodes with mixed styles, even in “View only” mode.
 
@@ -16,7 +17,7 @@ Supported browsers: Chrome, Firefox, and any Chromium-based browser (Edge, Opera
 
 [comment]: <> ([![Figma Search in Chrome Web Store]&#40;./add-to-chrome.svg&#41;]&#40;https://chrome.google.com/webstore/detail/figma-search/lfofpannpmmeeicgiiacjghmcfgnebbi&#41;)
 
-[comment]: <> ([![Figma Search in Mozilla Add-ons]&#40;./add-to-firefox.svg&#41;]&#40;https://addons.mozilla.org/en-US/firefox/addon/figma-search/&#41;)
+[![Figma Mixed Styles in Mozilla Add-ons](./add-to-firefox.svg)](https://addons.mozilla.org/en-US/firefox/addon/figma-mixed-styles/)
 
 [![Demo Video on YouTube](./youtube-demo.png)](https://youtu.be/mDQfaYA5ltA)
 
@@ -29,7 +30,9 @@ So this plugin was built as a temporary solution, until the time when Figma deve
 
 ## How to install
 
-[comment]: <> (### Chrome Web Store)
+### Chrome Web Store
+
+Soon.
 
 [comment]: <> (If you use Chrome or any Chromium-based browser &#40;Edge, Opera, Yandex.Browser, etc&#41; it's easy to install )
 
@@ -39,13 +42,13 @@ So this plugin was built as a temporary solution, until the time when Figma deve
 
 [comment]: <> (Just click on the link above and press “Add to Chrome”.)
 
-[comment]: <> (### Firefox Add-ons)
+### Firefox Add-ons
 
-[comment]: <> (If you use Mozilla Firefox, then install the extension from the official store:)
+If you use Mozilla Firefox, then install the extension from the official store:
 
-[comment]: <> (**[Figma Search]&#40;https://addons.mozilla.org/en-US/firefox/addon/figma-search/&#41; in Firefox Browser Add-ons**)
+**[Figma Mixed Styles](https://addons.mozilla.org/en-US/firefox/addon/figma-mixed-styles/) in Firefox Browser Add-ons**
 
-[comment]: <> (Open the link above and press “Add to Firefox”.)
+Open the link above and press “Add to Firefox”.
 
 ### Manual installation
 
