@@ -79,5 +79,9 @@
 4. Выбрать скаченный ZIP-файл с расширением (из п. 1).
 5. Одобрить установку.
 
+## Ещё
+
+- **[Figma Search Extension](https://github.com/igoradamenko/figma-search-extension)**
+
 
 [![Sponsored by FunBox](https://funbox.ru/badges/sponsored_by_funbox_centered.svg)](https://funbox.ru)

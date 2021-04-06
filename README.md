@@ -79,4 +79,9 @@ If you use Linux or have already installed one of those editions, then:
 4. Select the downloaded ZIP extension (from 1st step).
 5. Approve an installation.
 
+## More
+
+- **[Figma Search Extension](https://github.com/igoradamenko/figma-search-extension)**
+
+
 [![Sponsored by FunBox](https://funbox.ru/badges/sponsored_by_funbox_centered.svg)](https://funbox.ru)

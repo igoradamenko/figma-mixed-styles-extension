@@ -2,4 +2,3 @@ node_modules/
 .idea/
 *.zip
 tmp/
-test/screenshots/
