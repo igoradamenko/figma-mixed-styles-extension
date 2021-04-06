@@ -6,7 +6,7 @@
      width="128"
      height="128">
 
-[comment]: <> (![Chrome Web Store]&#40;https://img.shields.io/chrome-web-store/v/lfofpannpmmeeicgiiacjghmcfgnebbi?label=Chrome%20Web%20Store&#41; )
+![Chrome Web Store](https://img.shields.io/chrome-web-store/v/fadeacofglmdopmolpaoaacijjfifcpe?label=Chrome%20Web%20Store) 
 ![Mozilla Add-on](https://img.shields.io/amo/v/figma-mixed-styles?label=Mozilla%20Add-ons)
 
 Extract CSS of Figma text nodes with mixed styles, even in “View only” mode.
@@ -15,7 +15,7 @@ Supported browsers: Chrome, Firefox, and any Chromium-based browser (Edge, Opera
 
 [По-русски](./README.ru.md)
 
-[comment]: <> ([![Figma Search in Chrome Web Store]&#40;./add-to-chrome.svg&#41;]&#40;https://chrome.google.com/webstore/detail/figma-search/lfofpannpmmeeicgiiacjghmcfgnebbi&#41;)
+[![Figma Mixed Styles in Chrome Web Store](./add-to-chrome.svg)](https://chrome.google.com/webstore/detail/figma-mixed-styles/fadeacofglmdopmolpaoaacijjfifcpe)
 
 [![Figma Mixed Styles in Mozilla Add-ons](./add-to-firefox.svg)](https://addons.mozilla.org/en-US/firefox/addon/figma-mixed-styles/)
 
@@ -32,15 +32,12 @@ So this plugin was built as a temporary solution, until the time when Figma deve
 
 ### Chrome Web Store
 
-Soon.
+If you use Chrome or any Chromium-based browser (Edge, Opera, Yandex.Browser, etc) it's easy to install 
+the extension from the official store:
 
-[comment]: <> (If you use Chrome or any Chromium-based browser &#40;Edge, Opera, Yandex.Browser, etc&#41; it's easy to install )
+**[Figma Mixed Styles](https://chrome.google.com/webstore/detail/figma-mixed-styles/fadeacofglmdopmolpaoaacijjfifcpe) in Chrome Web Store**
 
-[comment]: <> (the extension from the official store:)
-
-[comment]: <> (**[Figma Search]&#40;https://chrome.google.com/webstore/detail/figma-search/lfofpannpmmeeicgiiacjghmcfgnebbi&#41; in Crome Web Store**)
-
-[comment]: <> (Just click on the link above and press “Add to Chrome”.)
+Just click on the link above and press “Add to Chrome”.
 
 ### Firefox Add-ons
 

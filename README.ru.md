@@ -6,7 +6,7 @@
      width="128"
      height="128">
 
-[comment]: <> (![Chrome Web Store]&#40;https://img.shields.io/chrome-web-store/v/lfofpannpmmeeicgiiacjghmcfgnebbi?label=Chrome%20Web%20Store&#41; )
+![Chrome Web Store](https://img.shields.io/chrome-web-store/v/fadeacofglmdopmolpaoaacijjfifcpe?label=Chrome%20Web%20Store) 
 ![Mozilla Add-on](https://img.shields.io/amo/v/figma-mixed-styles?label=Mozilla%20Add-ons)
 
 Генератор CSS для текстовых нод Figma со сложной стилизацией. Работает даже в режиме «View only».
@@ -15,7 +15,7 @@
 
 [In English](./README.md)
 
-[comment]: <> ([![Figma Search в Chrome Web Store]&#40;./add-to-chrome.svg&#41;]&#40;https://chrome.google.com/webstore/detail/figma-search/lfofpannpmmeeicgiiacjghmcfgnebbi&#41;)
+[![Figma Mixed Styles в Chrome Web Store](./add-to-chrome.svg)](https://chrome.google.com/webstore/detail/figma-mixed-styles/fadeacofglmdopmolpaoaacijjfifcpe)
 
 [![Figma Mixed Styles в Mozilla Add-ons](./add-to-firefox.svg)](https://addons.mozilla.org/en-US/firefox/addon/figma-mixed-styles/)
 
@@ -32,15 +32,12 @@
 
 ### Chrome Web Store
 
-Скоро.
+Пользователям Chrome или иного браузера на основе Chromium (Edge, Opera, Yandex.Browser, пр.) стоит устанавливать 
+расширение из официального магазина Chrome:
 
-[comment]: <> (Пользователям Chrome или иного браузера на основе Chromium &#40;Edge, Opera, Yandex.Browser, пр.&#41; стоит устанавливать )
+**[Figma Mixed Styles](https://chrome.google.com/webstore/detail/figma-mixed-styles/fadeacofglmdopmolpaoaacijjfifcpe) в Chrome Web Store**
 
-[comment]: <> (расширение из официального магазина Chrome:)
-
-[comment]: <> (**[Figma Search]&#40;https://chrome.google.com/webstore/detail/figma-search/lfofpannpmmeeicgiiacjghmcfgnebbi&#41; в Crome Web Store**)
-
-[comment]: <> (Нажмите на ссылку выше, и на открывшейся странице нажмите на «Add to Chrome».)
+Нажмите на ссылку выше, и на открывшейся странице нажмите на «Add to Chrome».
 
 ### Firefox Add-ons
 
